@@ -5,6 +5,7 @@ interface Props {
     active: boolean;
     onClick: () => void;
 }
+
 //moi dong trong danh sach hoi thoai, friend hay group la 1 chatElement.
 const ChatElement = ({ chat, active, onClick }: Props) => (
     <div className={`chat-item ${active ? "active" : ""}`} onClick={onClick}>
