@@ -27,3 +27,28 @@ const DocMsg = ({ el }: Props) => (
         <p>{el.text}</p>
     </Row>
 );
+
+const LinkMsg = ({ el }: Props) => (
+    <Row el={el}>
+        <div className="msg-card">
+            <img src={el.preview} alt={el.text} className="msg-img" />
+            <a href="https://www.youtube.com" target="_blank">www.youtube.com</a>
+        </div>
+        <p>{el.text}</p>
+    </Row>
+);
+
+
+const ReplyMsg = ({ el }: Props) => (
+    <Row el={el}>
+        <div className="msg-card quote">{el.text}</div>
+        <p>{el.reply}</p>
+    </Row>
+);
+const Timeline = ({ el }: Props) => (
+    <div className="timeline">
+        <hr /><span>{el.text}</span><hr />
+    </div>
+);
+
+export { Timeline, TextMsg, MediaMsg, DocMsg, LinkMsg, ReplyMsg };
