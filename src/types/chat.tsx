@@ -3,6 +3,9 @@ export interface Message{
     text: string;
     incoming: boolean;
     time: string;
+    img?: string;
+    preview?: string;
+    reply?: string;
 }
 export interface Chat{
     id: string;
