@@ -1,0 +1,187 @@
+@use "../../../styles/variables" as *;
+
+.sidebar {
+  width: 76px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 24px 0 20px;
+
+  background-color: $bg-sidebar;
+  border-right: 1px solid $border;
+
+  // Logo
+  &__logo {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 48px;
+
+    color: $primary;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  //Navigation
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+  }
+
+  &__nav-item {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 14px;
+
+    background-color: transparent;
+    color: $text-muted;
+
+    font-size: 21px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $primary-light;
+      color: $primary;
+    }
+
+    &.active {
+      background-color: $primary-light;
+      color: $primary;
+    }
+  }
+
+  // Divider
+  &__divider {
+    width: 40px;
+    height: 1px;
+
+    background-color: $border;
+
+    margin: 18px 0;
+  }
+
+  //Bottom section
+  &__bottom {
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  //Theme switch
+  &__theme-switch {
+    position: relative;
+
+    width: 52px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 3px;
+
+    border: 1px solid $border;
+    border-radius: 20px;
+
+    background-color: $bg-page;
+    cursor: pointer;
+
+    .sidebar__theme-icon {
+      width: 20px;
+      height: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 1;
+
+      font-size: 13px;
+      color: $text-muted;
+    }
+
+    .sidebar__theme-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+
+      width: 22px;
+      height: 22px;
+
+      border-radius: 50%;
+      background-color: $primary-light;
+
+      transition: transform 0.25s ease;
+    }
+
+    &.dark {
+      .sidebar__theme-thumb {
+        transform: translateX(24px);
+      }
+
+      .sidebar__theme-icon:last-of-type {
+        color: $primary;
+      }
+    }
+  }
+
+  //Avatar
+  &__avatar {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid $primary-light;
+    border-radius: 50%;
+
+    background-color: $primary;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+  }
+
+  &__online-status {
+    position: absolute;
+
+    right: -1px;
+    bottom: -1px;
+
+    width: 12px;
+    height: 12px;
+
+    border: 2px solid $bg-sidebar;
+    border-radius: 50%;
+
+    background-color: $online;
+  }
+}
