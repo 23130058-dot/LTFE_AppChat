@@ -12,5 +12,6 @@ export interface Chat{
     time: string;
     unread: number;
     online: boolean;
+    pinned?: boolean;
     messages: Message[];
 }

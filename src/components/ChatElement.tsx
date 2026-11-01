@@ -16,6 +16,7 @@ const ChatElement = ({ chat, active, onClick }: Props) => (
         <div className="chat-info">
             <div className="chat-name">{chat.name}</div>
             <div className="chat-last">{chat.last_message}</div>
+
         </div>
         <div className="chat-meta">
             <span className="chat-time">{chat.time}</span>
