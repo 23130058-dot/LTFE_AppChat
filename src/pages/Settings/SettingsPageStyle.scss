@@ -1,0 +1,339 @@
+@use "../../styles/variables" as *;
+
+.settings {
+  height: 100vh;
+  overflow-y: auto;
+
+  padding: 32px 24px 48px;
+  background-color: $bg-chat;
+
+  &__container {
+    max-width: 640px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    margin: 0 0 4px;
+
+    font-size: 24px;
+    font-weight: 700;
+    color: $text-main;
+  }
+
+  // Card
+  &__card {
+    padding: 24px;
+
+    background-color: $bg-page;
+    border: 1px solid $border;
+    border-radius: 16px;
+  }
+
+  &__card-title {
+    margin: 0 0 12px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-main;
+  }
+
+  // Profile header
+  &__profile-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid $border;
+  }
+
+  &__avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__avatar {
+    width: 84px;
+    height: 84px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background-color: $primary;
+    color: white;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__avatar-edit {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid $bg-page;
+    border-radius: 50%;
+
+    background-color: $bg-sidebar;
+    color: $text-muted;
+
+    font-size: 13px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $primary-light;
+      color: $primary;
+    }
+  }
+
+  &__profile-name {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: $text-main;
+  }
+
+  &__profile-username {
+    margin: 4px 0 0;
+
+    font-size: 14px;
+    color: $text-muted;
+  }
+
+  //Form
+  &__form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 16px;
+  }
+
+  &__field {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-main;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+
+      padding: 10px 12px;
+
+      border: 1px solid $border;
+      border-radius: 10px;
+
+      background-color: $bg-page;
+      color: $text-main;
+
+      font-family: inherit;
+      font-size: 14px;
+
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &::placeholder {
+        color: $text-muted;
+      }
+
+      &:hover {
+        border-color: $disabled;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px $primary-light;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+  }
+
+  &__counter {
+    align-self: flex-end;
+
+    font-size: 12px;
+    color: $text-muted;
+  }
+
+  //Actions
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid $border;
+  }
+
+  &__btn {
+    padding: 10px 20px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &--primary {
+      background-color: $primary;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: $primary-hover;
+      }
+
+      &:active:not(:disabled) {
+        background-color: $primary-active;
+      }
+
+      &:disabled {
+        background-color: $disabled;
+      }
+    }
+
+    &--secondary {
+      background-color: $bg-page;
+      border-color: $border;
+      color: $text-main;
+
+      &:hover:not(:disabled) {
+        background-color: $bg-sidebar;
+      }
+
+      &:disabled {
+        color: $disabled;
+      }
+    }
+  }
+
+  //Hàng cài đặt (Bảo mật)
+  &__row {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px;
+    margin: 0 -12px;
+    width: calc(100% + 24px);
+
+    border: none;
+    border-radius: 12px;
+
+    background-color: transparent;
+    text-align: left;
+    font-family: inherit;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $bg-sidebar;
+    }
+  }
+
+  &__row-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background-color: $primary-light;
+    color: $primary;
+
+    font-size: 16px;
+  }
+
+  &__row-text {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-main;
+    }
+
+    small {
+      font-size: 13px;
+      color: $text-muted;
+    }
+  }
+
+  &__row-arrow {
+    font-size: 13px;
+    color: $text-muted;
+  }
+
+  @media (max-width: 600px) {
+    padding: 20px 16px 32px;
+
+    &__form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__card {
+      padding: 18px;
+    }
+  }
+}
