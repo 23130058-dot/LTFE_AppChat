@@ -9,3 +9,18 @@ body {
   color: #1F1F1F;
   background: #fff;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: #1F1F1F;
+  background: #fff;
+}
