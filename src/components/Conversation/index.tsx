@@ -8,10 +8,11 @@ interface Props {
     chat: Chat;
     onSend: (text: string) => void;
     onToggleInfo?: () => void;
+    infoOpen?: boolean;
 }
 //khung chat o giua
 
-const Conversation = ({ chat, onSend, onToggleInfo }: Props) => {
+const Conversation = ({ chat, onSend, onToggleInfo, infoOpen }: Props) => {
     const endRef = useRef<HTMLDivElement>(null);
     //co tin moi hoac doi chat thi cuon xuong cuoi
     useEffect(() => {
@@ -20,7 +21,7 @@ const Conversation = ({ chat, onSend, onToggleInfo }: Props) => {
 
     return (
         <div className="conversation">
-            <ChatHeader chat={chat} onToggleInfo={onToggleInfo} />
+            <ChatHeader chat={chat} onToggleInfo={onToggleInfo} infoOpen={infoOpen} />
 
             <div className="conversation-body">
                 <div className="messages">
