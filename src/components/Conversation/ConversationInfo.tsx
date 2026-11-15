@@ -14,7 +14,7 @@ import {
     Trash,
 } from "phosphor-react";
 import type { Chat } from "../../types/chat";
-import "../../styles/conversation-info.scss";
+import "../../styles/conservation-info.scss";
 
 interface Props {
     chat: Chat;

@@ -3,7 +3,7 @@ import { chats as initialChats } from "../data/chatdata";
 import type { Chat } from "../types/chat";
 import ChatList from "../components/ChatList";
 import Conversation from "../components/Conversation";
-import ConversationInfo from "../components/Conversation/ConsersationInfo"
+import ConversationInfo from "../components/Conversation/ConversationInfo.tsx"
 import "../styles/general-app.scss";
 
 // Trang chat chinh cua app tro chuyen chat app.

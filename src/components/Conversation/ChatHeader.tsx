@@ -4,10 +4,11 @@ import type { Chat } from "../../types/chat";
 interface Props {
     chat: Chat;
     onToggleInfo?: () => void;
+    infoOpen?: boolean;
 }
 //header cua khung chat chua cac thong tin nhu avt icon goi dien ,...
 
-const ChatHeader = ({ chat, onToggleInfo }: Props) => (
+const ChatHeader = ({ chat, onToggleInfo, infoOpen }: Props) => (
     <header className="chat-header">
         <div className="chat-header-user" onClick={onToggleInfo}>
             <div className="avatar-wrap">
