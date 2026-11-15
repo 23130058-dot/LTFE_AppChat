@@ -24,7 +24,15 @@ const ChatHeader = ({ chat, onToggleInfo }: Props) => (
             <button className="icon-btn"><Phone /></button>
             <button className="icon-btn"><MagnifyingGlass /></button>
             <span className="vline" />
-            <button className="icon-btn"><CaretDown /></button>
+            <button
+                className={`icon-btn ${infoOpen ? "active" : ""}`}
+                onClick={onToggleInfo}
+                title="Thông tin hội thoại"
+                aria-label="Thông tin hội thoại"
+                aria-pressed={infoOpen}
+            >
+                <CaretDown />
+            </button>
         </div>
     </header>
 );
