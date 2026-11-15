@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faLock, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import "./SettingsPage.scss";
+import "./SettingsPageStyle.scss";
 
 type Gender = "male" | "female" | "other";
 

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faComments, faMessage, faUserGroup, faGear, faSun, faMoon} from "@fortawesome/free-solid-svg-icons";
 
 import "./Sidebar.scss";
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
     const [activeItem, setActiveItem] = useState("chat");
@@ -40,15 +41,13 @@ function Sidebar() {
 
                 <div className="sidebar__divider"></div>
 
-                <button
-                    className={`sidebar__nav-item ${
-                        activeItem === "settings" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveItem("settings")}
+                <NavLink
+                    to="/settings"
+                    className={({ isActive }) => `sidebar__nav-item ${isActive ? "active" : ""}`}
                     title="Cài đặt"
                 >
                     <FontAwesomeIcon icon={faGear} />
-                </button>
+                </NavLink>
 
             </nav>
 
