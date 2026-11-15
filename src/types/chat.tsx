@@ -19,5 +19,6 @@ export interface Chat{
     unread: number;
     online: boolean;
     pinned?: boolean;
+    muted?: boolean;
     messages: Message[];
 }

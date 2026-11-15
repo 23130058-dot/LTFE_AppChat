@@ -4,10 +4,11 @@ import type { Chat } from "../../types/chat";
 interface Props {
     chat: Chat;
     onToggleInfo?: () => void;
+    infoOpen?: boolean;
 }
 //header cua khung chat chua cac thong tin nhu avt icon goi dien ,...
 
-const ChatHeader = ({ chat, onToggleInfo }: Props) => (
+const ChatHeader = ({ chat, onToggleInfo, infoOpen }: Props) => (
     <header className="chat-header">
         <div className="chat-header-user" onClick={onToggleInfo}>
             <div className="avatar-wrap">
@@ -24,7 +25,15 @@ const ChatHeader = ({ chat, onToggleInfo }: Props) => (
             <button className="icon-btn"><Phone /></button>
             <button className="icon-btn"><MagnifyingGlass /></button>
             <span className="vline" />
-            <button className="icon-btn"><CaretDown /></button>
+            <button
+                className={`icon-btn ${infoOpen ? "active" : ""}`}
+                onClick={onToggleInfo}
+                title="Thông tin hội thoại"
+                aria-label="Thông tin hội thoại"
+                aria-pressed={infoOpen}
+            >
+                <CaretDown />
+            </button>
         </div>
     </header>
 );
