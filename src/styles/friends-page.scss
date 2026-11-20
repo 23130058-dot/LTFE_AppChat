@@ -1,0 +1,38 @@
+@use "variables" as *;
+
+.friends-page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 40px;
+  background: $bg-page;
+  color: $text-main;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 8px 0 0;
+      color: $text-muted;
+    }
+
+    > span {
+      flex: none;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: $primary-light;
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+}

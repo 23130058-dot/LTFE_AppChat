@@ -3,6 +3,7 @@ import { friends } from "../../data/friends";
 import type { Friend } from "../../types/friend";
 import FriendSearch from "../../components/Friends/FriendSearch";
 import FriendsList from "../../components/Friends/FriendList";
+import "../../styles/friends-page.scss";
 
 //Trang ban be cua ap tro chuyen
 

@@ -1,0 +1,34 @@
+.friends-page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 40px;
+  background: #FFFFFF;
+  color: #1F1F1F;
+}
+.friends-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.friends-page__header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+.friends-page__header p {
+  margin: 8px 0 0;
+  color: #6B7280;
+}
+.friends-page__header > span {
+  flex: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #FFF1E5;
+  color: #FF7A00;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=friends-page.css.map */
