@@ -30,5 +30,50 @@
   color: #FF7A00;
   font-weight: 600;
 }
+.friends-page .friend-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 28px;
+  padding: 11px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #6B7280;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.friends-page .friend-search:focus-within {
+  border-color: #FF7A00;
+  box-shadow: 0 0 0 3px #FFF1E5;
+}
+.friends-page .friend-search svg {
+  flex: none;
+}
+.friends-page .friend-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1F1F1F;
+  font: inherit;
+}
+.friends-page .friend-search input::placeholder {
+  color: #6B7280;
+}
+.friends-page [role=status] {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #FFF1E5;
+  color: #1F1F1F;
+}
+.friends-page > h2 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 650;
+}
 
 /*# sourceMappingURL=friends-page.css.map */
