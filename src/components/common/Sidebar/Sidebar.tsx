@@ -8,7 +8,6 @@ import "./Sidebar.scss";
 import { NavLink } from "react-router-dom";
 
 function Sidebar() {
-    const [activeItem, setActiveItem] = useState("chat");
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     return (
@@ -21,23 +20,25 @@ function Sidebar() {
 
             {/*navigation*/}
             <nav className="sidebar__navigation">
-                <button
-                    className={`sidebar__nav-item ${activeItem === "chat" ? "active" : ""}`}
-                    onClick={() => setActiveItem("chat")}
+                <NavLink
+                    to="/app"
+                    className={({ isActive }) =>
+                        `sidebar__nav-item ${isActive ? "active" : ""}`
+                    }
                     title="Chat"
                 >
                     <FontAwesomeIcon icon={faMessage} />
-                </button>
+                </NavLink>
 
-                <button
-                    className={`sidebar__nav-item ${
-                        activeItem === "friends" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveItem("friends")}
+                <NavLink
+                    to="/friends"
+                    className={({ isActive }) =>
+                        `sidebar__nav-item ${isActive ? "active" : ""}`
+                    }
                     title="Bạn bè"
                 >
                     <FontAwesomeIcon icon={faUserGroup} />
-                </button>
+                </NavLink>
 
                 <div className="sidebar__divider"></div>
 
