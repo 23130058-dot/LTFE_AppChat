@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Box, Button, IconButton, InputAdornment, Link } from '@mui/material';
+import { Alert, Button, IconButton, InputAdornment, Link } from '@mui/material';
 import { Eye, EyeSlash } from 'phosphor-react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -35,7 +35,7 @@ export default function LoginForm() {
 
     return (
         <FormProvider methods={methods} onSubmit={onSubmit}>
-            <Box sx={{ display: 'grid', gap: 2 }}>
+            <div style={{ display: 'grid', gap: 16 }} >
                 {apiError && <Alert severity="error">{apiError}</Alert>}
                 <RHFTextField<LoginInput>
                     name="user"
@@ -64,13 +64,13 @@ export default function LoginForm() {
                         },
                     }}
                 />
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }} >
                     <Link component={RouterLink} to="/auth/reset-password">Quên mật khẩu?</Link>
-                </Box>
+                </div>
                 <Button fullWidth size="large" type="submit" variant="contained" disabled={methods.formState.isSubmitting}>
                     {methods.formState.isSubmitting ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </Button>
-            </Box>
+            </div>
         </FormProvider>
     );
 }
