@@ -1,30 +1,20 @@
-import { Link, Stack, Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import React from 'react'
 import RegisterForm from '../../sections/auth/RegisterForm';
 import AuthSocial from '../../sections/auth/AuthSocial';
 
 const Register = () => {
-  return (
-    <Stack spacing={2} sx={{mb:5, position:'relative'}}>
-        <Typography variant='h4'>
-            Get Started With WeChat
-        </Typography>
-        <Stack direction={'row'} spacing={0.5}>
-            <Typography variant='body2'>Allready have an account?</Typography>
-            <Link component={RouterLink} to='/auth/login' variant='subtitle2'>Sign in</Link>
-        </Stack>
-        {/* Register Form */}
-        <RegisterForm/>
+    return (
+        <div style={{ width: '100%', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Typography variant="h4" sx={{ mb: 2 }}>Tạo tài khoản</Typography>
 
-        <Typography component={'div'} sx={{color:'text.secondary', mt:3, typography:'caption'
-    ,textAlign:'center'}}>{'By signining up, I agree to '}
-    <Link underline='always' color='text.primary'>Terms of service</Link>{' and '}
-    <Link underline='always' color='text.primary'>Privacy policy</Link>
-    </Typography>
-    <AuthSocial/>
-    </Stack>
-  )
+            <RegisterForm />
+            <Typography component="div" sx={{ color: "text.secondary", mt: 3, typography: "caption", textAlign: "center" }}>
+                Bằng việc đăng ký, bạn đồng ý với các điều khoản sử dụng và chính sách bảo mật.
+            </Typography>
+            <AuthSocial />
+        </div>
+    )
 }
 
 export default Register

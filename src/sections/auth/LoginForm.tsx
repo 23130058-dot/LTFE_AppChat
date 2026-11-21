@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import FormProvider from '../../components/hook-form/FormProvider';
 import { RHFTextField } from '../../components/hook-form';
 import { authApi, type LoginInput } from '../../services/authApi';
+import '../../styles/login.scss';
 
 const schema = Yup.object({
     user: Yup.string().trim().required('Vui lòng nhập tên người dùng'),
@@ -35,7 +36,7 @@ export default function LoginForm() {
 
     return (
         <FormProvider methods={methods} onSubmit={onSubmit}>
-            <div style={{ display: 'grid', gap: 16 }} >
+            <div className="login-form">
                 {apiError && <Alert severity="error">{apiError}</Alert>}
                 <RHFTextField<LoginInput>
                     name="user"
@@ -64,8 +65,20 @@ export default function LoginForm() {
                         },
                     }}
                 />
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }} >
-                    <Link component={RouterLink} to="/auth/reset-password">Quên mật khẩu?</Link>
+
+                <div className="auth-links">
+                    <div className="auth-register">
+                        <span>Chưa có tài khoản? </span>
+                        <Link component={RouterLink} to="/auth/register">
+                            Tạo tài khoản
+                        </Link>
+                    </div>
+
+                    <div className="auth-forgot">
+                        <Link component={RouterLink} to="/auth/reset-password">
+                            Quên mật khẩu?
+                        </Link>
+                    </div>
                 </div>
                 <Button fullWidth size="large" type="submit" variant="contained" disabled={methods.formState.isSubmitting}>
                     {methods.formState.isSubmitting ? 'Đang đăng nhập...' : 'Đăng nhập'}
