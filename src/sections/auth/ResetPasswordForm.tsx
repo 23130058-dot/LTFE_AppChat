@@ -1,62 +1,34 @@
-import React , { useState } from 'react';
-import * as Yup from 'yup';
+import { useState } from 'react';
+import { Alert, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import FormProvider from '../../components/hook-form/FormProvider'
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Alert, Button, Stack } from '@mui/material';
+import * as Yup from 'yup';
+import FormProvider from '../../components/hook-form/FormProvider';
 import { RHFTextField } from '../../components/hook-form';
+import { authApi, type ForgotPasswordInput } from '../../services/authApi';
 
-const ResetPasswordForm = () => {
-
-  //validation rules 
-  const ResetPasswordSchema = Yup.object().shape({
-    email:Yup.string().required('Email is required').email('Email must be a valid email address'),
-    
-  });
-
-  const defaultValues = {
-    email:'dulanjali@gmail.com',
-  };
-
-  const methods = useForm({
-    resolver: yupResolver(ResetPasswordForm),
-    defaultValues
-  });
-
-  const {reset, setError, handleSubmit, formState:{errors, isSubmitting, isSubmitSuccessful}}
-   = methods;
-
-   const onSubmit = async (data) =>{
+const schema = Yup.object({ email: Yup.string().trim().email('Email không hợp lệ').required('Vui lòng nhập email') });
+export default function ResetPasswordForm() {
+    const [apiError, setApiError] = useState('');
+    const [success, setSuccess] = useState('');
+    const methods = useForm<ForgotPasswordInput>({ resolver: yupResolver(schema) as never, defaultValues: { email: '' } });
+    const onSubmit = async (values: ForgotPasswordInput) => {
+        setApiError(''); setSuccess('');
         try {
-            //submit data to backend
+            await authApi.forgotPassword(values);
+            setSuccess('Nếu email tồn tại, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư của bạn.');
         } catch (error) {
-            console.log(error);
-            reset();
-            setError('afterSubmit',{
-                ...error,
-                message: error.message
-            })
+            setApiError(error instanceof Error ? error.message : 'Không thể gửi yêu cầu. Vui lòng thử lại.');
         }
-   }
-
-  return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-            {!!errors.afterSubmit && <Alert severity='error'>{errors.afterSubmit.message}</Alert>}
-        
-        <RHFTextField name='email' label='Email address'/>
-        <Button fullWidth color='inherit' size='large' type='submit' variant='contained'
-        sx={{bgcolor:'text.primary', color:(theme)=> theme.palette.mode === 'light' ?
-         'common.white':'grey.800',
-         '&:hover':{
-            bgcolor:'text.primary',
-            color:(theme)=> theme.palette.mode === 'light' ? 'common.white':'grey.800',
-         }}}>Send Request</Button>
-        </Stack>
-    
-       
-    </FormProvider>
-  )
+    };
+    return (
+        <FormProvider methods={methods} onSubmit={onSubmit}>
+            <div style={{ display: 'grid', gap: 16 }} >
+                {apiError && <Alert severity="error">{apiError}</Alert>}
+                {success && <Alert severity="success">{success}</Alert>}
+                <RHFTextField<ForgotPasswordInput> name="email" label="Email" type="email" autoComplete="email" />
+                <Button fullWidth size="large" type="submit" variant="contained" disabled={methods.formState.isSubmitting}>{methods.formState.isSubmitting ? 'Đang gửi...' : 'Gửi yêu cầu'}</Button>
+            </div>
+        </FormProvider>
+    );
 }
-
-export default ResetPasswordForm
