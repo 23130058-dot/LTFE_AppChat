@@ -1,29 +1,12 @@
-import PropTypes from "prop-types";
-//form
-import {useFormContext, Controller} from "react-hook-form";
-// @mui
-import {TextField} from "@mui/material";
-import React from "react";
+import type { ReactNode } from 'react';
+import { Controller, useFormContext, type FieldValues, type Path } from 'react-hook-form';
+import { TextField, type TextFieldProps } from '@mui/material';
 
-RHFTextField.propTypes = {
-    name: PropTypes.string,
-    label: PropTypes.string,
-    helperText: PropTypes.node
-}
+type Props<T extends FieldValues> = Omit<TextFieldProps, 'name'> & { name: Path<T>; helperText?: ReactNode };
 
-interface RHFTextFieldProps {
-    InputProps?: { endAdornment: React.JSX.Element }
-}
-
-export default function RHFTextField({name, helperText, ...other, InputProps}) {
-
-    const {control} = useFormContext();
-    return (
-        <Controller name={name} control={control} render={({field, fieldState: {error}}) => (
-            <TextField {...field} fullWidth
-                       value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
-                       error={!!error} helperText={error ? error.message : helperText}
-                       {...other}/>
-        )}/>
-    )
+export default function RHFTextField<T extends FieldValues>({ name, helperText, ...other }: Props<T>) {
+    const { control } = useFormContext<T>();
+    return <Controller name={name} control={control} render={({ field, fieldState: { error } }) => (
+        <TextField {...field} {...other} fullWidth value={field.value ?? ''} error={Boolean(error)} helperText={error?.message ?? helperText} />
+    )} />;
 }
