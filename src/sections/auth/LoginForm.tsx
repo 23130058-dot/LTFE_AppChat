@@ -7,7 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import FormProvider from '../../components/hook-form/FormProvider';
 import { RHFTextField } from '../../components/hook-form';
-import { authApi, type LoginInput } from '../../services/authApi';
+import { requestAuth } from '../../services/appChatSocket';
+import { setCurrentUser } from '../../services/profileStorage';
+type LoginInput = { user: string; pass: string };
 import '../../styles/login.scss';
 
 const schema = Yup.object({
@@ -27,7 +29,9 @@ export default function LoginForm() {
     const onSubmit = async (values: LoginInput) => {
         setApiError('');
         try {
-            await authApi.login({ user: values.user.trim(), pass: values.pass });
+            const username = values.user.trim();
+            await requestAuth('LOGIN', { user: username, pass: values.pass });
+            setCurrentUser(username);
             navigate('/app', { replace: true });
         } catch (error) {
             setApiError(error instanceof Error ? error.message : 'Đăng nhập thất bại. Vui lòng thử lại.');
