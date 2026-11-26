@@ -1,23 +1,13 @@
 import { useState } from 'react';
-import {
-    Alert,
-    Button,
-    FormControl,
-    FormHelperText,
-    InputAdornment,
-    InputLabel,
-    MenuItem,
-    Select,
-    TextField,
-    Link
-} from '@mui/material';
+import {Alert, Button, FormControl, FormHelperText, InputAdornment, InputLabel, MenuItem, Select, TextField, Link} from '@mui/material';
 import '../../styles/login.scss';
 import { Eye, EyeSlash } from 'phosphor-react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { authApi } from '../../services/authApi';
+import { requestAuth } from '../../services/appChatSocket';
+import { saveRegisteredProfile } from '../../services/profileStorage';
 
 type RegisterFormValues = {
     name: string;
@@ -85,7 +75,7 @@ export default function RegisterForm() {
         watch,
         formState: { errors, isSubmitting },
     } = useForm<RegisterFormValues>({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(schema) as never,
         defaultValues: {
             name: '',
             username: '',
@@ -100,32 +90,57 @@ export default function RegisterForm() {
 
     const gender = watch('gender');
 
+
     const onSubmit = async (values: RegisterFormValues) => {
         setApiError('');
         setSuccess('');
 
         try {
-            // API WebSocket REGISTER chỉ nhận:
-            // user = tên người dùng
-            // pass = mật khẩu
-            await authApi.register({
-                user: values.username.trim(),
+            const username = values.username.trim();
+            const email = values.email.trim();
+            const phone = values.phone.trim();
+
+            const response = await requestAuth('REGISTER', {
+                user: username,
                 pass: values.password,
+                name: values.name.trim(),
+                phone,
+                email,
+                gender: values.gender,
+                birthDate: values.birthDate,
             });
+
+            // Lưu hồ sơ theo username để trang Cài đặt lấy đúng tài khoản
+            // ngay cả khi backend hiện tại chỉ lưu user/pass.
+            saveRegisteredProfile({
+                name: values.name.trim(),
+                username,
+                phone,
+                email,
+                gender: values.gender as 'male' | 'female' | 'other',
+                birthDate: values.birthDate,
+                bio: '',
+            });
+
+            console.log('REGISTER SUCCESS:', response);
 
             setSuccess('Đăng ký thành công. Bạn có thể đăng nhập.');
 
             window.setTimeout(() => {
                 navigate('/auth/login');
             }, 1200);
+
         } catch (error) {
+            console.error('REGISTER ERROR:', error);
+
             setApiError(
                 error instanceof Error
                     ? error.message
-                    : 'Đăng ký thất bại. Vui lòng thử lại.',
+                    : 'Đăng ký thất bại.'
             );
         }
     };
+
 
     return (
         <form className="register-form" onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -213,7 +228,7 @@ export default function RegisterForm() {
                         {...register('birthDate')}
                         error={!!errors.birthDate}
                         helperText={errors.birthDate?.message}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{ inputLabel: { shrink: true } }}
                     />
                 </div>
 
