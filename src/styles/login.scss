@@ -1,0 +1,218 @@
+
+@use './variables' as *;
+
+.auth-form {
+  width: 100%;
+  display: grid;
+  gap: 16px;
+
+  /* TextField và FormControl */
+  .MuiFormControl-root,
+  .MuiTextField-root {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Label */
+  .MuiInputLabel-root {
+    color: $text-muted;
+    font-size: 15px;
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: $primary;
+  }
+
+  .MuiOutlinedInput-root {
+    min-height: 52px;
+    border-radius: 10px;
+    background: $bg-page;
+    color: $text-main;
+
+    transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+    fieldset {
+      border-color: $border;
+      transition: border-color 0.2s ease;
+    }
+
+    &:hover fieldset {
+      border-color: #c9ced6;
+    }
+
+    &.Mui-focused {
+      fieldset {
+        border-color: $primary;
+        border-width: 1px;
+      }
+
+      box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+    }
+
+    &.Mui-error {
+      fieldset {
+        border-color: $danger;
+      }
+    }
+  }
+
+  .MuiOutlinedInput-input {
+    font-size: 15px;
+    padding: 14px;
+
+    &::placeholder {
+      color: #9ca3af;
+      opacity: 1;
+    }
+  }
+
+  .MuiFormHelperText-root {
+    margin: 5px 0 0 2px;
+    font-size: 12px;
+  }
+
+  .MuiSelect-select {
+    min-height: 52px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .MuiSelect-icon {
+    color: $text-muted;
+  }
+
+  .MuiButton-contained {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 10px;
+    background: $primary;
+    color: #fff;
+    box-shadow: none;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+
+    transition: background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+
+    &:hover {
+      background: $primary-hover;
+      box-shadow: 0 5px 14px rgba(255, 122, 0, 0.2);
+    }
+
+    &:active {
+      background: $primary-active;
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      background: $disabled;
+      color: #fff;
+      box-shadow: none;
+    }
+  }
+
+  .MuiInputAdornment-root .MuiButton-root,
+  .MuiInputAdornment-root .MuiIconButton-root {
+    min-width: 36px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    color: $text-muted;
+
+    &:hover {
+      color: $primary;
+      background: $primary-light;
+    }
+  }
+
+  .MuiAlert-root {
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+.login-form {
+  @extend .auth-form;
+
+  .auth-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .auth-register,
+  .auth-forgot {
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .auth-links a {
+    color: #0d6efd;
+    text-decoration: underline;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+}
+
+
+.register-form {
+  @extend .auth-form;
+
+  max-width: 600px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .register-two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+
+  input[type="date"] {
+    font-family: inherit;
+  }
+
+  .register-login {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+
+    a {
+      color: #0d6efd;
+      text-decoration: underline;
+
+      &:hover {
+        color: $primary-hover;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .register-form {
+    max-width: 100%;
+
+    .register-two-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+}
