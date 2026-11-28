@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { groups } from "../../data/groups";
+import "../../styles/group-details.scss";
 
 // trang chi tiet group
 
