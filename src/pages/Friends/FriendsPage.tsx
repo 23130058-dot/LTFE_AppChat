@@ -7,6 +7,7 @@ import FriendSearch from "../../components/Friends/FriendSearch";
 import FriendsList from "../../components/Friends/FriendList";
 import GroupList from "../../components/Groups/GroupList";
 import "../../styles/friends-page.scss";
+import { useNavigate } from "react-router-dom";
 
 type ActiveTab = "friends" | "groups";
 
@@ -30,13 +31,15 @@ function FriendsPage() {
     };
 
     const handleOpenGroup = (group: ChatGroup) => {
-        setNotice(`Bạn đã chọn mở nhóm ${group.name}.`);
+        setNotice("");
+        navigate(`/groups/${group.id}`);
     };
 
     const selectTab = (tab: ActiveTab) => {
         setActiveTab(tab);
         setNotice("");
     };
+    const navigate = useNavigate();
 
     return (
         <section className="friends-page">
