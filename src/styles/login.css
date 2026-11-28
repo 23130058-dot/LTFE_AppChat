@@ -1,0 +1,182 @@
+@charset "UTF-8";
+.auth-form, .register-form, .login-form {
+  width: 100%;
+  display: grid;
+  gap: 16px;
+  /* TextField và FormControl */
+}
+.auth-form .MuiFormControl-root, .register-form .MuiFormControl-root, .login-form .MuiFormControl-root,
+.auth-form .MuiTextField-root,
+.register-form .MuiTextField-root,
+.login-form .MuiTextField-root {
+  width: 100%;
+  margin: 0;
+}
+.auth-form, .register-form, .login-form {
+  /* Label */
+}
+.auth-form .MuiInputLabel-root, .register-form .MuiInputLabel-root, .login-form .MuiInputLabel-root {
+  color: #6B7280;
+  font-size: 15px;
+}
+.auth-form .MuiInputLabel-root.Mui-focused, .register-form .MuiInputLabel-root.Mui-focused, .login-form .MuiInputLabel-root.Mui-focused {
+  color: #FF7A00;
+}
+.auth-form .MuiOutlinedInput-root, .register-form .MuiOutlinedInput-root, .login-form .MuiOutlinedInput-root {
+  min-height: 52px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #1F1F1F;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.auth-form .MuiOutlinedInput-root fieldset, .register-form .MuiOutlinedInput-root fieldset, .login-form .MuiOutlinedInput-root fieldset {
+  border-color: #E5E7EB;
+  transition: border-color 0.2s ease;
+}
+.auth-form .MuiOutlinedInput-root:hover fieldset, .register-form .MuiOutlinedInput-root:hover fieldset, .login-form .MuiOutlinedInput-root:hover fieldset {
+  border-color: #c9ced6;
+}
+.auth-form .MuiOutlinedInput-root.Mui-focused fieldset, .register-form .MuiOutlinedInput-root.Mui-focused fieldset, .login-form .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #FF7A00;
+  border-width: 1px;
+}
+.auth-form .MuiOutlinedInput-root.Mui-focused, .register-form .MuiOutlinedInput-root.Mui-focused, .login-form .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+}
+.auth-form .MuiOutlinedInput-root.Mui-error fieldset, .register-form .MuiOutlinedInput-root.Mui-error fieldset, .login-form .MuiOutlinedInput-root.Mui-error fieldset {
+  border-color: #EF4444;
+}
+.auth-form .MuiOutlinedInput-input, .register-form .MuiOutlinedInput-input, .login-form .MuiOutlinedInput-input {
+  font-size: 15px;
+  padding: 14px;
+}
+.auth-form .MuiOutlinedInput-input::placeholder, .register-form .MuiOutlinedInput-input::placeholder, .login-form .MuiOutlinedInput-input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+.auth-form .MuiFormHelperText-root, .register-form .MuiFormHelperText-root, .login-form .MuiFormHelperText-root {
+  margin: 5px 0 0 2px;
+  font-size: 12px;
+}
+.auth-form .MuiSelect-select, .register-form .MuiSelect-select, .login-form .MuiSelect-select {
+  min-height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  font-size: 15px;
+}
+.auth-form .MuiSelect-icon, .register-form .MuiSelect-icon, .login-form .MuiSelect-icon {
+  color: #6B7280;
+}
+.auth-form .MuiButton-contained, .register-form .MuiButton-contained, .login-form .MuiButton-contained {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 10px;
+  background: #FF7A00;
+  color: #fff;
+  box-shadow: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+.auth-form .MuiButton-contained:hover, .register-form .MuiButton-contained:hover, .login-form .MuiButton-contained:hover {
+  background: #E56A00;
+  box-shadow: 0 5px 14px rgba(255, 122, 0, 0.2);
+}
+.auth-form .MuiButton-contained:active, .register-form .MuiButton-contained:active, .login-form .MuiButton-contained:active {
+  background: #CC5F00;
+  transform: translateY(1px);
+}
+.auth-form .MuiButton-contained:disabled, .register-form .MuiButton-contained:disabled, .login-form .MuiButton-contained:disabled {
+  background: #D1D5DB;
+  color: #fff;
+  box-shadow: none;
+}
+.auth-form .MuiInputAdornment-root .MuiButton-root, .register-form .MuiInputAdornment-root .MuiButton-root, .login-form .MuiInputAdornment-root .MuiButton-root,
+.auth-form .MuiInputAdornment-root .MuiIconButton-root,
+.register-form .MuiInputAdornment-root .MuiIconButton-root,
+.login-form .MuiInputAdornment-root .MuiIconButton-root {
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  color: #6B7280;
+}
+.auth-form .MuiInputAdornment-root .MuiButton-root:hover, .register-form .MuiInputAdornment-root .MuiButton-root:hover, .login-form .MuiInputAdornment-root .MuiButton-root:hover,
+.auth-form .MuiInputAdornment-root .MuiIconButton-root:hover,
+.register-form .MuiInputAdornment-root .MuiIconButton-root:hover,
+.login-form .MuiInputAdornment-root .MuiIconButton-root:hover {
+  color: #FF7A00;
+  background: #FFF1E5;
+}
+.auth-form .MuiAlert-root, .register-form .MuiAlert-root, .login-form .MuiAlert-root {
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.login-form .auth-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+.login-form .auth-register,
+.login-form .auth-forgot {
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  white-space: nowrap;
+}
+.login-form .auth-links a {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+.login-form .auth-links a:hover {
+  color: #E56A00;
+}
+
+.register-form {
+  max-width: 600px;
+}
+.register-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.register-form .register-two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+.register-form input[type=date] {
+  font-family: inherit;
+}
+.register-form .register-login {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.register-form .register-login a {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+.register-form .register-login a:hover {
+  color: #E56A00;
+}
+
+@media (max-width: 600px) {
+  .register-form {
+    max-width: 100%;
+  }
+  .register-form .register-two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=login.css.map */

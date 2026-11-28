@@ -8,6 +8,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ResetPassword from "./pages/auth/ResetPassword";
 import NewPassword from "./pages/auth/NewPassword";
+import GroupDetailsPage from "./pages/Groups/GroupDetailsPage";
 
 function AuthLayout({ children }: { children: ReactNode }) {
     return (
@@ -31,6 +32,7 @@ function App() {
             {/* Các trang chính */}
             <Route element={<DashboardLayout />}>
                 <Route path="/app" element={<GeneralApp />} />
+                <Route path="/groups/:groupId" element={<GroupDetailsPage />}/>
                 <Route path="/friends" element={<FriendsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
             </Route>
