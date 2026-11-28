@@ -37,7 +37,6 @@
   }
 
   //o Tim kiem
-
   .friend-search {
     display: flex;
     align-items: center;
@@ -77,7 +76,6 @@
   }
 
   //thong bam khi bam nhan tin
-
   [role="status"] {
     margin: 0 0 20px;
     padding: 12px 14px;
@@ -91,8 +89,8 @@
     font-size: 18px;
     font-weight: 650;
   }
-  //Danh sach ban be
 
+  //Danh sach ban be
   .friends-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -108,7 +106,6 @@
   }
 
   //friend card
-
   .friend-card {
     display: flex;
     align-items: center;
@@ -231,6 +228,183 @@
       flex-direction: column;
 
       &__message-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Tab ban be
+
+.friends-page {
+  &__tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $border;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 4px;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      background: transparent;
+      color: $text-muted;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+
+      &.active {
+        border-bottom-color: $primary;
+        color: $primary;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $primary;
+        outline-offset: 3px;
+      }
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 6px;
+        border-radius: 11px;
+        background: $bg-sidebar;
+        font-size: 12px;
+      }
+
+      &.active span {
+        background: $primary-light;
+        color: $primary;
+      }
+    }
+  }
+
+  [role="tabpanel"] > h2 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    font-weight: 650;
+  }
+
+  // Danh sach nhom
+  .group-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+
+    &__empty {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 32px 16px;
+      color: $text-muted;
+      text-align: center;
+    }
+  }
+
+  // Group card
+  .group-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid $border;
+    border-radius: 16px;
+    background: $bg-page;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: 0 4px 14px rgba(31, 31, 31, 0.06);
+    }
+
+    &__icon {
+      display: flex;
+      flex: none;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: $primary-light;
+      color: $primary;
+      font-size: 20px;
+    }
+
+    &__info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    &__name {
+      overflow: hidden;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 650;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__members {
+      margin: 5px 0 0;
+      color: $text-muted;
+      font-size: 13px;
+    }
+
+    &__button {
+      flex: none;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 10px;
+      background: $primary;
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: $primary-hover;
+      }
+
+      &:active {
+        background: $primary-active;
+      }
+
+      &:focus-visible {
+        outline: 3px solid $primary-light;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+// Responsive cho tab va danh sach nhom
+@media (max-width: 600px) {
+  .friends-page {
+    &__tabs {
+      gap: 18px;
+    }
+
+    .group-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .friends-page {
+    .group-card {
+      align-items: stretch;
+      flex-direction: column;
+
+      &__button {
         width: 100%;
       }
     }
